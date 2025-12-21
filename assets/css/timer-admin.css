@@ -1,0 +1,201 @@
+/**
+ * Tobalt Lessons Timer - Admin Styles
+ *
+ * @package TobaltLessonsTimer
+ * @since 1.0.0
+ * Author: Tobalt — https://tobalt.lt
+ */
+
+.tobalt-timer-admin {
+	max-width: 1200px;
+}
+
+.tobalt-timer-container {
+	display: grid;
+	grid-template-columns: 350px 1fr;
+	gap: var(--spacing-xl, 32px);
+	margin-top: var(--spacing-lg, 24px);
+}
+
+/* Profiles List */
+.tobalt-profiles-list {
+	background: var(--color-bg-primary, #ffffff);
+	border: 1px solid var(--color-border, #e0e0e0);
+	border-radius: var(--radius-lg, 12px);
+	padding: var(--spacing-lg, 24px);
+}
+
+.tobalt-profiles-list h2 {
+	margin-top: 0;
+	font-size: var(--font-size-lg, 18px);
+	font-weight: 600;
+}
+
+.no-profiles {
+	color: var(--color-text-secondary, #666666);
+	text-align: center;
+	padding: var(--spacing-xl, 32px) 0;
+}
+
+.profiles {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.profile-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: var(--spacing-md, 16px);
+	border: 1px solid var(--color-border, #e0e0e0);
+	border-radius: var(--radius-md, 8px);
+	margin-bottom: var(--spacing-sm, 8px);
+	transition: all 0.2s;
+}
+
+.profile-item:hover {
+	border-color: var(--color-primary, #1a1a1a);
+	box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.05));
+}
+
+.profile-item.active {
+	border-color: var(--color-accent, #0066cc);
+	background: var(--color-bg-accent-subtle, #f0f7ff);
+}
+
+.profile-info strong {
+	display: block;
+	font-size: var(--font-size-md, 16px);
+	margin-bottom: var(--spacing-xs, 4px);
+}
+
+.profile-meta {
+	font-size: var(--font-size-sm, 14px);
+	color: var(--color-text-secondary, #666666);
+}
+
+.badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: var(--radius-sm, 4px);
+	font-size: var(--font-size-xs, 12px);
+	font-weight: 500;
+	margin-left: var(--spacing-xs, 4px);
+}
+
+.badge.active {
+	background: var(--color-accent, #0066cc);
+	color: white;
+}
+
+.profile-actions {
+	display: flex;
+	gap: var(--spacing-xs, 4px);
+}
+
+.new-profile {
+	width: 100%;
+	margin-top: var(--spacing-md, 16px);
+}
+
+/* Profile Editor */
+.tobalt-profile-editor {
+	background: var(--color-bg-primary, #ffffff);
+	border: 1px solid var(--color-border, #e0e0e0);
+	border-radius: var(--radius-lg, 12px);
+	padding: var(--spacing-xl, 32px);
+}
+
+.editor-title {
+	margin-top: 0;
+	font-size: var(--font-size-xl, 24px);
+	font-weight: 600;
+}
+
+/* Lessons Container */
+#lessons-container {
+	margin-bottom: var(--spacing-md, 16px);
+}
+
+.lesson-row {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm, 8px);
+	margin-bottom: var(--spacing-sm, 8px);
+	padding: var(--spacing-sm, 8px);
+	background: var(--color-bg-secondary, #f9f9f9);
+	border-radius: var(--radius-md, 8px);
+}
+
+.lesson-number {
+	font-weight: 600;
+	min-width: 30px;
+	color: var(--color-text-secondary, #666666);
+}
+
+.lesson-row input[type="time"] {
+	flex: 1;
+	padding: var(--spacing-xs, 4px) var(--spacing-sm, 8px);
+	border: 1px solid var(--color-border, #e0e0e0);
+	border-radius: var(--radius-sm, 4px);
+}
+
+.lesson-row input[type="number"] {
+	width: 80px;
+	padding: var(--spacing-xs, 4px) var(--spacing-sm, 8px);
+	border: 1px solid var(--color-border, #e0e0e0);
+	border-radius: var(--radius-sm, 4px);
+}
+
+.duration-label {
+	font-size: var(--font-size-sm, 14px);
+	color: var(--color-text-secondary, #666666);
+}
+
+.remove-lesson {
+	background: var(--color-error, #ef4444);
+	color: white;
+	border: none;
+	width: 32px;
+	height: 32px;
+	border-radius: var(--radius-sm, 4px);
+	cursor: pointer;
+	font-size: 20px;
+	line-height: 1;
+	padding: 0;
+}
+
+.remove-lesson:hover {
+	background: var(--color-error-dark, #dc2626);
+}
+
+.add-lesson {
+	margin-top: var(--spacing-xs, 4px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+	.tobalt-timer-container {
+		grid-template-columns: 1fr;
+	}
+
+	.tobalt-profiles-list {
+		order: 2;
+	}
+
+	.tobalt-profile-editor {
+		order: 1;
+	}
+}
+
+@media (max-width: 768px) {
+	.lesson-row {
+		flex-wrap: wrap;
+	}
+
+	.lesson-row input[type="time"],
+	.lesson-row input[type="number"] {
+		flex: 1 1 calc(50% - 4px);
+	}
+}
