@@ -17,6 +17,9 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 // Delete plugin options.
 delete_option( 'tobalt_timer_settings' );
 
+// Delete schedule cache transient.
+delete_transient( 'tobalt_timer_active_schedule' );
+
 // Clean up rate limiting transients.
 global $wpdb;
 

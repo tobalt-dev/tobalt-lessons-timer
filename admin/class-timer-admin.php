@@ -93,6 +93,9 @@ class Tobalt_Timer_Admin {
 
 		update_option( 'tobalt_timer_settings', $settings );
 
+		// Clear schedule cache
+		Tobalt_Timer_Schedule_Manager::clear_cache();
+
 		wp_send_json_success( array(
 			'message' => __( 'Profile saved successfully', 'tobalt-lessons-timer' ),
 			'profile_id' => $profile_id,
@@ -122,6 +125,9 @@ class Tobalt_Timer_Admin {
 			}
 
 			update_option( 'tobalt_timer_settings', $settings );
+
+			// Clear schedule cache
+			Tobalt_Timer_Schedule_Manager::clear_cache();
 
 			wp_send_json_success( array( 'message' => __( 'Profile deleted', 'tobalt-lessons-timer' ) ) );
 		} else {

@@ -21,11 +21,18 @@ class Tobalt_Timer_Schedule_Manager {
 	}
 
 	/**
-	 * Get active schedule profile.
+	 * Get active schedule profile with caching.
 	 *
 	 * @return array|false Schedule data or false.
 	 */
 	public function get_active_schedule() {
+		$cache_key = 'tobalt_timer_active_schedule';
+		$cached = get_transient( $cache_key );
+
+		if ( false !== $cached ) {
+			return $cached;
+		}
+
 		$settings = get_option( 'tobalt_timer_settings', array() );
 		$active_profile = isset( $settings['active_profile'] ) ? $settings['active_profile'] : '';
 
@@ -33,7 +40,23 @@ class Tobalt_Timer_Schedule_Manager {
 			return false;
 		}
 
-		return $settings['profiles'][ $active_profile ];
+		$schedule = $settings['profiles'][ $active_profile ];
+
+		// Cache for 1 hour (will be invalidated on settings save)
+		set_transient( $cache_key, $schedule, HOUR_IN_SECONDS );
+
+		return $schedule;
+	}
+
+	/**
+	 * Clear schedule cache.
+	 *
+	 * Called when settings are updated.
+	 *
+	 * @return void
+	 */
+	public static function clear_cache() {
+		delete_transient( 'tobalt_timer_active_schedule' );
 	}
 
 	/**
