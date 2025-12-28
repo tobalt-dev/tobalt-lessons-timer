@@ -1,0 +1,139 @@
+/**
+ * Tobalt Lessons Timer - Frontend Styles
+ *
+ * @package TobaltLessonsTimer
+ * @since 1.0.0
+ * Author: Tobalt — https://tobalt.lt
+ */
+
+.tobalt-timer {
+	background: var(--color-bg-primary, #ffffff);
+	border: 1px solid var(--color-border, #e0e0e0);
+	border-radius: var(--radius-lg, 12px);
+	padding: var(--spacing-xl, 32px);
+	max-width: 600px;
+	margin: 0 auto;
+	box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.05));
+}
+
+.tobalt-timer.compact {
+	padding: var(--spacing-lg, 24px);
+	max-width: 400px;
+}
+
+/* Timer Message */
+.timer-message {
+	text-align: center;
+	padding: var(--spacing-lg, 24px);
+}
+
+.timer-message p {
+	font-size: var(--font-size-lg, 18px);
+	color: var(--color-text-secondary, #666666);
+	margin: 0;
+}
+
+/* Current Lesson */
+.timer-current {
+	text-align: center;
+}
+
+.timer-label {
+	font-size: var(--font-size-sm, 14px);
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--color-text-secondary, #666666);
+	margin-bottom: var(--spacing-md, 16px);
+}
+
+.timer-countdown {
+	margin: var(--spacing-lg, 24px) 0;
+}
+
+.countdown-display {
+	font-size: 64px;
+	font-weight: 300;
+	color: var(--color-primary, #1a1a1a);
+	line-height: 1;
+	font-variant-numeric: tabular-nums;
+	font-family: var(--font-mono, 'SF Mono', Monaco, monospace);
+}
+
+.compact .countdown-display {
+	font-size: 48px;
+}
+
+.countdown-label {
+	font-size: var(--font-size-sm, 14px);
+	color: var(--color-text-secondary, #666666);
+	margin-top: var(--spacing-sm, 8px);
+}
+
+.timer-time-range {
+	font-size: var(--font-size-md, 16px);
+	color: var(--color-text-secondary, #666666);
+	margin-top: var(--spacing-md, 16px);
+}
+
+/* Next Lesson */
+.timer-next {
+	margin-top: var(--spacing-xl, 32px);
+	padding-top: var(--spacing-lg, 24px);
+	border-top: 1px solid var(--color-border, #e0e0e0);
+	text-align: center;
+}
+
+.next-label {
+	font-size: var(--font-size-sm, 14px);
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--color-text-secondary, #666666);
+	margin-bottom: var(--spacing-xs, 4px);
+}
+
+.next-info {
+	font-size: var(--font-size-md, 16px);
+	color: var(--color-text-primary, #1a1a1a);
+}
+
+/* Break Time */
+.timer-break {
+	text-align: center;
+}
+
+.timer-break .timer-label {
+	color: var(--color-accent, #0066cc);
+}
+
+.timer-break .countdown-display {
+	color: var(--color-accent, #0066cc);
+}
+
+.timer-next-info {
+	font-size: var(--font-size-md, 16px);
+	color: var(--color-text-secondary, #666666);
+	margin-top: var(--spacing-md, 16px);
+}
+
+/* After School */
+.timer-message.after-school p {
+	color: var(--color-success, #22c55e);
+	font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.tobalt-timer {
+		padding: var(--spacing-lg, 24px);
+	}
+
+	.countdown-display {
+		font-size: 48px;
+	}
+
+	.compact .countdown-display {
+		font-size: 36px;
+	}
+}

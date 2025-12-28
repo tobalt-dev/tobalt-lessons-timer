@@ -1,0 +1,238 @@
+/**
+ * Tobalt Admin Design System
+ * Scandinavian minimalist design tokens and base styles
+ *
+ * Author: Tobalt — https://tobalt.lt
+ */
+
+:root {
+    /* Brand Colors */
+    --tobalt-primary: #4299E1;
+    --tobalt-primary-dark: #2B6CB0;
+    --tobalt-primary-light: #90CDF4;
+
+    /* Neutral Palette - Scandinavian */
+    --tobalt-gray-50: #F7FAFC;
+    --tobalt-gray-100: #EDF2F7;
+    --tobalt-gray-200: #E2E8F0;
+    --tobalt-gray-300: #CBD5E0;
+    --tobalt-gray-400: #A0AEC0;
+    --tobalt-gray-500: #718096;
+    --tobalt-gray-600: #4A5568;
+    --tobalt-gray-700: #2D3748;
+    --tobalt-gray-800: #1A202C;
+    --tobalt-gray-900: #171923;
+
+    /* Status Colors */
+    --tobalt-success: #48BB78;
+    --tobalt-success-light: #C6F6D5;
+    --tobalt-warning: #F6AD55;
+    --tobalt-warning-light: #FED7AA;
+    --tobalt-error: #F56565;
+    --tobalt-error-light: #FED7D7;
+    --tobalt-info: #4299E1;
+    --tobalt-info-light: #BEE3F8;
+
+    /* Typography */
+    --tobalt-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --tobalt-font-size-xs: 12px;
+    --tobalt-font-size-sm: 14px;
+    --tobalt-font-size-base: 16px;
+    --tobalt-font-size-lg: 18px;
+    --tobalt-font-size-xl: 20px;
+    --tobalt-font-size-2xl: 24px;
+    --tobalt-font-weight-normal: 400;
+    --tobalt-font-weight-medium: 500;
+    --tobalt-font-weight-semibold: 600;
+    --tobalt-font-weight-bold: 700;
+    --tobalt-line-height-tight: 1.25;
+    --tobalt-line-height-normal: 1.5;
+    --tobalt-line-height-relaxed: 1.75;
+
+    /* Spacing - 8px Grid */
+    --tobalt-space-1: 8px;
+    --tobalt-space-2: 16px;
+    --tobalt-space-3: 24px;
+    --tobalt-space-4: 32px;
+    --tobalt-space-5: 40px;
+    --tobalt-space-6: 48px;
+    --tobalt-space-8: 64px;
+
+    /* Borders & Radius */
+    --tobalt-border-width: 1px;
+    --tobalt-border-color: var(--tobalt-gray-200);
+    --tobalt-border-radius-sm: 4px;
+    --tobalt-border-radius: 8px;
+    --tobalt-border-radius-lg: 12px;
+    --tobalt-border-radius-full: 9999px;
+
+    /* Shadows */
+    --tobalt-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --tobalt-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --tobalt-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --tobalt-shadow-md: 0 6px 12px rgba(0, 0, 0, 0.1);
+    --tobalt-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+    /* Touch Targets (Accessibility) */
+    --tobalt-min-touch: 44px;
+
+    /* Transitions */
+    --tobalt-transition-fast: 150ms ease;
+    --tobalt-transition-base: 250ms ease;
+    --tobalt-transition-slow: 350ms ease;
+
+    /* Z-index Scale */
+    --tobalt-z-dropdown: 1000;
+    --tobalt-z-sticky: 1020;
+    --tobalt-z-fixed: 1030;
+    --tobalt-z-modal-backdrop: 1040;
+    --tobalt-z-modal: 1050;
+    --tobalt-z-popover: 1060;
+    --tobalt-z-tooltip: 1070;
+}
+
+/* Base Reset */
+.tobalt-sp-dashboard *,
+.tobalt-sp-settings *,
+.tobalt-sp-help *,
+.tobalt-wizard-container * {
+    box-sizing: border-box;
+}
+
+/* Typography Base */
+.tobalt-sp-dashboard,
+.tobalt-sp-settings,
+.tobalt-sp-help,
+.tobalt-wizard-container {
+    font-family: var(--tobalt-font-family);
+    font-size: var(--tobalt-font-size-base);
+    line-height: var(--tobalt-line-height-normal);
+    color: var(--tobalt-gray-800);
+}
+
+/* Headings */
+.tobalt-sp-dashboard h1,
+.tobalt-sp-dashboard h2,
+.tobalt-sp-dashboard h3,
+.tobalt-sp-dashboard h4,
+.tobalt-sp-settings h1,
+.tobalt-sp-settings h2,
+.tobalt-sp-settings h3,
+.tobalt-sp-help h1,
+.tobalt-sp-help h2,
+.tobalt-sp-help h3 {
+    font-weight: var(--tobalt-font-weight-semibold);
+    line-height: var(--tobalt-line-height-tight);
+    color: var(--tobalt-gray-900);
+    margin: 0 0 var(--tobalt-space-2);
+}
+
+.tobalt-sp-dashboard h1 { font-size: var(--tobalt-font-size-2xl); }
+.tobalt-sp-dashboard h2 { font-size: var(--tobalt-font-size-xl); }
+.tobalt-sp-dashboard h3 { font-size: var(--tobalt-font-size-lg); }
+.tobalt-sp-dashboard h4 { font-size: var(--tobalt-font-size-base); }
+
+/* Buttons */
+.tobalt-button,
+button.tobalt-toggle-module {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px var(--tobalt-space-3);
+    min-height: var(--tobalt-min-touch);
+    font-family: var(--tobalt-font-family);
+    font-size: var(--tobalt-font-size-sm);
+    font-weight: var(--tobalt-font-weight-medium);
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    border: var(--tobalt-border-width) solid transparent;
+    border-radius: var(--tobalt-border-radius);
+    background-color: var(--tobalt-gray-100);
+    color: var(--tobalt-gray-700);
+    transition: all var(--tobalt-transition-fast);
+}
+
+.tobalt-button:hover,
+button.tobalt-toggle-module:hover {
+    background-color: var(--tobalt-gray-200);
+    color: var(--tobalt-gray-900);
+}
+
+.tobalt-button:focus,
+button.tobalt-toggle-module:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+.tobalt-button-primary {
+    background-color: var(--tobalt-primary);
+    color: white;
+    border-color: var(--tobalt-primary);
+}
+
+.tobalt-button-primary:hover {
+    background-color: var(--tobalt-primary-dark);
+    color: white;
+}
+
+/* Badge/Status */
+.tobalt-badge,
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    font-size: var(--tobalt-font-size-xs);
+    font-weight: var(--tobalt-font-weight-medium);
+    line-height: 1;
+    border-radius: var(--tobalt-border-radius-full);
+    background-color: var(--tobalt-gray-100);
+    color: var(--tobalt-gray-700);
+}
+
+.status-badge.status-active {
+    background-color: var(--tobalt-success-light);
+    color: #22543D;
+}
+
+.status-badge.status-inactive {
+    background-color: var(--tobalt-gray-200);
+    color: var(--tobalt-gray-600);
+}
+
+/* Card Component */
+.tobalt-card {
+    background-color: white;
+    border: var(--tobalt-border-width) solid var(--tobalt-border-color);
+    border-radius: var(--tobalt-border-radius);
+    box-shadow: var(--tobalt-shadow-xs);
+    padding: var(--tobalt-space-3);
+    margin-bottom: var(--tobalt-space-3);
+}
+
+.tobalt-card h2 {
+    margin-bottom: var(--tobalt-space-3);
+    padding-bottom: var(--tobalt-space-2);
+    border-bottom: var(--tobalt-border-width) solid var(--tobalt-border-color);
+}
+
+/* Empty State */
+.tobalt-empty-state,
+.no-activity {
+    padding: var(--tobalt-space-6);
+    text-align: center;
+    color: var(--tobalt-gray-500);
+    font-size: var(--tobalt-font-size-sm);
+}
+
+/* Utility Classes */
+.tobalt-mt-1 { margin-top: var(--tobalt-space-1); }
+.tobalt-mt-2 { margin-top: var(--tobalt-space-2); }
+.tobalt-mt-3 { margin-top: var(--tobalt-space-3); }
+.tobalt-mb-1 { margin-bottom: var(--tobalt-space-1); }
+.tobalt-mb-2 { margin-bottom: var(--tobalt-space-2); }
+.tobalt-mb-3 { margin-bottom: var(--tobalt-space-3); }
+.tobalt-text-center { text-align: center; }
+.tobalt-text-right { text-align: right; }
+.tobalt-hidden { display: none; }
