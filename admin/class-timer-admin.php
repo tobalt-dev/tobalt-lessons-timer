@@ -167,9 +167,22 @@ class Tobalt_Timer_Admin {
 		$sanitized = array();
 
 		foreach ( $lessons as $lesson ) {
+			$start_time = sanitize_text_field( $lesson['start_time'] ?? '' );
+			$duration   = intval( $lesson['duration'] ?? 45 );
+
+			// Validate time format (HH:MM, 00:00 to 23:59)
+			if ( ! preg_match( '/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/', $start_time ) ) {
+				$start_time = '08:00'; // Default to 8:00 if invalid
+			}
+
+			// Validate duration range (1-240 minutes)
+			if ( $duration < 1 || $duration > 240 ) {
+				$duration = 45; // Default to 45 minutes if out of range
+			}
+
 			$sanitized[] = array(
-				'start_time' => sanitize_text_field( $lesson['start_time'] ?? '' ),
-				'duration' => intval( $lesson['duration'] ?? 45 ),
+				'start_time' => $start_time,
+				'duration'   => $duration,
 			);
 		}
 

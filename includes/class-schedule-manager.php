@@ -163,6 +163,13 @@ class Tobalt_Timer_Schedule_Manager {
 	public function ajax_get_current_lesson() {
 		check_ajax_referer( 'tobalt_timer', 'nonce' );
 
+		// Rate limiting: 60 requests per minute per IP
+		if ( Tobalt_Timer_Rate_Limiter::is_rate_limited( 'get_current_lesson', 60, 60 ) ) {
+			wp_send_json_error( array(
+				'message' => __( 'Per daug užklausų. Bandykite vėliau.', 'tobalt-lessons-timer' ),
+			), 429 );
+		}
+
 		$data = $this->get_current_lesson();
 		wp_send_json_success( $data );
 	}

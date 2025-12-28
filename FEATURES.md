@@ -7,7 +7,8 @@
 -  add security improvements and error logging
 
 ## Bug Fixes
-
+-  add input validation, rate limiting, and uninstall handler
+-  add XSS protection and missing AJAX handler
 
 ## Refactoring
 

@@ -28,7 +28,7 @@
 		$('#profile_id').val('');
 		currentProfileId = '';
 		$('#lessons-container').empty();
-		$('.editor-title').text(tobaltTimerAdmin.strings?.newProfile || 'New Profile');
+		$('.editor-title').text(tobaltTimerAdmin.strings.newProfile);
 	}
 
 	function loadProfile(profileId) {
@@ -86,7 +86,7 @@
 				<span class="lesson-number">${lessonNumber}.</span>
 				<input type="time" name="lessons[${lessonNumber - 1}][start_time]" value="${startTime}" required>
 				<input type="number" name="lessons[${lessonNumber - 1}][duration]" value="${duration}" min="1" max="240" required>
-				<span class="duration-label">min.</span>
+				<span class="duration-label">${tobaltTimerAdmin.strings.minutes}</span>
 				<button type="button" class="button remove-lesson">×</button>
 			</div>
 		`;
@@ -124,7 +124,7 @@
 		const profileId = $item.data('profile-id');
 		const profileName = $item.find('strong').text();
 
-		if (!confirm(`Delete profile "${profileName}"?`)) {
+		if (!confirm(tobaltTimerAdmin.strings.confirmDelete.replace('%s', profileName))) {
 			return;
 		}
 
@@ -140,7 +140,7 @@
 				if (response.success) {
 					location.reload();
 				} else {
-					alert(response.data?.message || 'Error deleting profile');
+					alert(response.data?.message || tobaltTimerAdmin.strings.errorDeleting);
 				}
 			}
 		});
@@ -195,7 +195,7 @@
 				if (response.success) {
 					location.reload();
 				} else {
-					alert(response.data?.message || 'Error saving profile');
+					alert(response.data?.message || tobaltTimerAdmin.strings.errorSaving);
 				}
 			}
 		});

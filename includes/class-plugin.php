@@ -28,6 +28,7 @@ class Tobalt_Timer_Plugin {
 	}
 
 	private function load_dependencies() {
+		require_once TOBALT_TIMER_DIR . 'includes/class-rate-limiter.php';
 		require_once TOBALT_TIMER_DIR . 'includes/class-schedule-manager.php';
 
 		if ( is_admin() ) {
@@ -130,6 +131,13 @@ class Tobalt_Timer_Plugin {
 			array(
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( 'tobalt_timer_admin' ),
+				'strings' => array(
+					'newProfile'       => __( 'Naujas profilis', 'tobalt-lessons-timer' ),
+					'minutes'          => __( 'min.', 'tobalt-lessons-timer' ),
+					'confirmDelete'    => __( 'Ištrinti profilį "%s"?', 'tobalt-lessons-timer' ),
+					'errorDeleting'    => __( 'Klaida trinant profilį', 'tobalt-lessons-timer' ),
+					'errorSaving'      => __( 'Klaida išsaugant profilį', 'tobalt-lessons-timer' ),
+				),
 			)
 		);
 	}
