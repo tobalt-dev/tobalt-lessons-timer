@@ -17,6 +17,7 @@ class Tobalt_Timer_Admin {
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
 		add_action( 'wp_ajax_tobalt_timer_save_settings', array( $this, 'ajax_save_settings' ) );
 		add_action( 'wp_ajax_tobalt_timer_delete_profile', array( $this, 'ajax_delete_profile' ) );
+		add_action( 'wp_ajax_tobalt_timer_get_profile', array( $this, 'ajax_get_profile' ) );
 	}
 
 	public function add_menu_page() {
@@ -126,6 +127,40 @@ class Tobalt_Timer_Admin {
 		} else {
 			wp_send_json_error( array( 'message' => __( 'Profile not found', 'tobalt-lessons-timer' ) ) );
 		}
+	}
+
+	/**
+	 * Get profile data for editing
+	 */
+	public function ajax_get_profile() {
+		check_ajax_referer( 'tobalt_timer_admin', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => __( 'Insufficient permissions', 'tobalt-lessons-timer' ) ) );
+		}
+
+		$profile_id = isset( $_POST['profile_id'] ) ? sanitize_text_field( wp_unslash( $_POST['profile_id'] ) ) : '';
+
+		if ( empty( $profile_id ) ) {
+			wp_send_json_error( array( 'message' => __( 'Invalid profile ID', 'tobalt-lessons-timer' ) ) );
+		}
+
+		$settings = get_option( 'tobalt_timer_settings', array() );
+
+		if ( ! isset( $settings['profiles'][ $profile_id ] ) ) {
+			wp_send_json_error( array( 'message' => __( 'Profile not found', 'tobalt-lessons-timer' ) ) );
+		}
+
+		$profile = $settings['profiles'][ $profile_id ];
+		$active_profile = isset( $settings['active_profile'] ) ? $settings['active_profile'] : '';
+
+		wp_send_json_success( array(
+			'profile_id'   => $profile_id,
+			'profile_name' => $profile['name'],
+			'days'         => $profile['days'] ?? array(),
+			'lessons'      => $profile['lessons'] ?? array(),
+			'is_active'    => $profile_id === $active_profile,
+		) );
 	}
 
 	private function sanitize_lessons( $lessons ) {

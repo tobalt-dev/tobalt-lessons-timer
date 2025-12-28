@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 			<?php else : ?>
 				<ul class="profiles">
 					<?php foreach ( $profiles as $id => $profile ) : ?>
-						<li class="profile-item <?php echo $id === $active_profile ? 'active' : ''; ?>" data-profile-id="<?php echo esc_attr( $id ); ?>">
+						<li class="profile-item <?php echo esc_attr( $id === $active_profile ? 'active' : '' ); ?>" data-profile-id="<?php echo esc_attr( $id ); ?>">
 							<div class="profile-info">
 								<strong><?php echo esc_html( $profile['name'] ); ?></strong>
 								<?php if ( $id === $active_profile ) : ?>

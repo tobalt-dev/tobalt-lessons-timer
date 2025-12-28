@@ -15,7 +15,7 @@ $show_next = isset( $atts['show_next'] ) && $atts['show_next'] === 'yes';
 $compact = isset( $atts['compact'] ) && $atts['compact'] === 'yes';
 ?>
 
-<div class="tobalt-timer <?php echo $compact ? 'compact' : ''; ?>" data-show-next="<?php echo $show_next ? '1' : '0'; ?>">
+<div class="tobalt-timer <?php echo esc_attr( $compact ? 'compact' : '' ); ?>" data-show-next="<?php echo esc_attr( $show_next ? '1' : '0' ); ?>">
 	<?php if ( $data['status'] === 'no_schedule' || $data['status'] === 'no_school' || $data['status'] === 'no_lessons' ) : ?>
 		<div class="timer-message">
 			<p><?php echo esc_html( $data['message'] ); ?></p>
